@@ -1,0 +1,12 @@
+### Create Order
+POST http://localhost:8080/order
+Content-Type: application/json
+
+{
+  "customer_id": "customer123",
+  "amount": 100.50,
+  "status": "pending"
+}
+
+### List Orders
+GET http://localhost:8080/order
