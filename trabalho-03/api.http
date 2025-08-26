@@ -1,4 +1,4 @@
-### Create Order
+### REST API - Create Order
 POST http://localhost:8080/order
 Content-Type: application/json
 
@@ -8,5 +8,53 @@ Content-Type: application/json
   "status": "pending"
 }
 
-### List Orders
+### REST API - List Orders
 GET http://localhost:8080/order
+
+### GraphQL - Create Order
+POST http://localhost:8081/query
+Content-Type: application/json
+
+{
+  "query": "mutation CreateOrder($input: CreateOrderInput!) { createOrder(input: $input) { id customerId amount status createdAt updatedAt } }",
+  "variables": {
+    "input": {
+      "customerId": "customer456",
+      "amount": 250.75,
+      "status": "confirmed"
+    }
+  }
+}
+
+### GraphQL - List Orders
+POST http://localhost:8081/query
+Content-Type: application/json
+
+{
+  "query": "query { orders { id customerId amount status createdAt updatedAt } }"
+}
+
+### GraphQL Playground (Open in browser)
+GET http://localhost:8081
+
+### gRPC-style Service - List Orders (MAIN REQUIREMENT)
+POST http://localhost:9090/order.OrderService/ListOrders
+Content-Type: application/json
+
+{}
+
+### gRPC-style Service - Create Order
+POST http://localhost:9090/order.OrderService/CreateOrder
+Content-Type: application/json
+
+{
+  "customer_id": "customer789",
+  "amount": 150.25,
+  "status": "processing"
+}
+
+### Alternative gRPC endpoints (for easier testing)
+GET http://localhost:9090/grpc/orders
+
+### gRPC Health Check
+GET http://localhost:9090/grpc/health
