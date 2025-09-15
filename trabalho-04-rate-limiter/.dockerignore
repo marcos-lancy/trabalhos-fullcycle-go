@@ -1,0 +1,32 @@
+# Git
+.git
+.gitignore
+
+# Documentation
+*.md
+docs/
+
+# Examples
+examples/
+
+# Scripts
+scripts/
+
+# Test files
+*_test.go
+integration_test.go
+
+# Build artifacts
+rate-limiter
+main
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
